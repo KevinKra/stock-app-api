@@ -1,0 +1,43 @@
+type quoteType {
+    exchange: String
+    shortName: String
+    longName: String
+    exchangeTimezoneName: String
+    exchangeTimezoneShortName: String
+    isEsgPopulated: String
+    gmtOffSetMilliseconds: String
+    quoteType: String
+    symbol: String
+    messageBoardId: String
+    market: String
+}
+
+type Basic {
+    quoteType: quoteType
+}
+
+# input DeleteInput {
+#     email: String!
+# }
+
+# type Response {
+#     success: Boolean!
+#     message: String!
+#     data: User
+# }
+
+# type User {
+#     email: String!
+#     username: String!
+#     role: Role!
+# }
+
+type Query {
+    # getBasic: [User!]!
+    getBasic(ticker: String!): Basic
+}
+
+# type Mutation {
+#     createUser(data: UserInput!): Response
+#     deleteUser(data: DeleteInput!): Response
+# }
