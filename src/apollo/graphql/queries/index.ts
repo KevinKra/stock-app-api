@@ -1,16 +1,6 @@
 const axios = require('axios');
 
-export const getBasic = async (
-    _: unknown,
-    args: any,
-    x: any,
-    y: any,
-    z: any
-) => {
-    // console.log('a', args);
-    // console.log('b', x);
-    // console.log('c', y);
-    // console.log('d', z);
+export const getBasic = async (_: unknown, args: { ticker: string }) => {
     try {
         const options = {
             method: 'GET',
