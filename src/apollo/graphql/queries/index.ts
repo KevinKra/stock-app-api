@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-export const getBasic = async (_: unknown, args: { ticker: string }) => {
+export const getDataByTicker = async (_: unknown, args: { ticker: string }) => {
     try {
         const options = {
             method: 'GET',
@@ -22,4 +22,4 @@ export const getBasic = async (_: unknown, args: { ticker: string }) => {
     }
 };
 
-export default { getBasic };
+export default { getDataByTicker };

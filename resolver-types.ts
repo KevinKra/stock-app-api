@@ -14,19 +14,19 @@ export type Scalars = {
   Float: number;
 };
 
-export type Basic = {
-  __typename?: 'Basic';
-  quoteType?: Maybe<QuoteType>;
-};
-
 export type Query = {
   __typename?: 'Query';
-  getBasic?: Maybe<Basic>;
+  getDataByTicker?: Maybe<TickerData>;
 };
 
 
-export type QueryGetBasicArgs = {
+export type QueryGetDataByTickerArgs = {
   ticker: Scalars['String'];
+};
+
+export type TickerData = {
+  __typename?: 'TickerData';
+  quoteType?: Maybe<QuoteType>;
 };
 
 export type QuoteType = {
@@ -113,29 +113,29 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  Basic: ResolverTypeWrapper<Basic>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  TickerData: ResolverTypeWrapper<TickerData>;
   quoteType: ResolverTypeWrapper<QuoteType>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  Basic: Basic;
   Boolean: Scalars['Boolean'];
   Query: {};
   String: Scalars['String'];
+  TickerData: TickerData;
   quoteType: QuoteType;
 };
 
-export type BasicResolvers<ContextType = any, ParentType extends ResolversParentTypes['Basic'] = ResolversParentTypes['Basic']> = {
-  quoteType?: Resolver<Maybe<ResolversTypes['quoteType']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  getDataByTicker?: Resolver<Maybe<ResolversTypes['TickerData']>, ParentType, ContextType, RequireFields<QueryGetDataByTickerArgs, 'ticker'>>;
 };
 
-export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  getBasic?: Resolver<Maybe<ResolversTypes['Basic']>, ParentType, ContextType, RequireFields<QueryGetBasicArgs, 'ticker'>>;
+export type TickerDataResolvers<ContextType = any, ParentType extends ResolversParentTypes['TickerData'] = ResolversParentTypes['TickerData']> = {
+  quoteType?: Resolver<Maybe<ResolversTypes['quoteType']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QuoteTypeResolvers<ContextType = any, ParentType extends ResolversParentTypes['quoteType'] = ResolversParentTypes['quoteType']> = {
@@ -154,8 +154,8 @@ export type QuoteTypeResolvers<ContextType = any, ParentType extends ResolversPa
 };
 
 export type Resolvers<ContextType = any> = {
-  Basic?: BasicResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  TickerData?: TickerDataResolvers<ContextType>;
   quoteType?: QuoteTypeResolvers<ContextType>;
 };
 

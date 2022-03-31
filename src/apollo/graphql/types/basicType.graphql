@@ -12,7 +12,7 @@ type quoteType {
     market: String
 }
 
-type Basic {
+type TickerData {
     quoteType: quoteType
 }
 
@@ -34,7 +34,7 @@ type Basic {
 
 type Query {
     # getBasic: [User!]!
-    getBasic(ticker: String!): Basic
+    getDataByTicker(ticker: String!): TickerData
 }
 
 # type Mutation {

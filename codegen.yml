@@ -2,7 +2,7 @@ overwrite: true
 schema: './src/apollo/graphql'
 documents: null
 generates:
-    ./resolvers-types.ts:
+    resolver-types.ts:
         plugins:
             - '@graphql-codegen/typescript'
             - '@graphql-codegen/typescript-resolvers'
