@@ -14,9 +14,11 @@ export const getDataByTicker = async (_: unknown, args: { ticker: string }) => {
         };
 
         const response = await axios.request(options);
-        console.log('e', response.data.quoteType);
         const quoteType = response.data.quoteType;
-        return quoteType;
+        const price = response.data.price;
+        const data = { ...quoteType, ...price };
+        console.log('data', data);
+        return data;
     } catch (error) {
         console.log({ error });
     }

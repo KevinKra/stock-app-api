@@ -12,6 +12,11 @@ type quoteType {
     market: String
 }
 
+type NumberObj {
+    raw: Float
+    fmt: String
+}
+
 type TickerData {
     exchange: String
     shortName: String
@@ -24,34 +29,11 @@ type TickerData {
     symbol: String
     messageBoardId: String
     market: String
-    # pegRatio: {
-    #     raw: Number
-    #     fmt: String
-    # }
+    regularMarketDayHigh: NumberObj
+    regularMarketChangePercent: NumberObj
+    postMarketChangePercent: NumberObj
 }
-
-# input DeleteInput {
-#     email: String!
-# }
-
-# type Response {
-#     success: Boolean!
-#     message: String!
-#     data: User
-# }
-
-# type User {
-#     email: String!
-#     username: String!
-#     role: Role!
-# }
 
 type Query {
-    # getBasic: [User!]!
     getDataByTicker(ticker: String!): TickerData
 }
-
-# type Mutation {
-#     createUser(data: UserInput!): Response
-#     deleteUser(data: DeleteInput!): Response
-# }

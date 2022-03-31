@@ -14,6 +14,12 @@ export type Scalars = {
   Float: number;
 };
 
+export type NumberObj = {
+  __typename?: 'NumberObj';
+  fmt?: Maybe<Scalars['String']>;
+  raw?: Maybe<Scalars['Float']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   getDataByTicker?: Maybe<TickerData>;
@@ -34,7 +40,10 @@ export type TickerData = {
   longName?: Maybe<Scalars['String']>;
   market?: Maybe<Scalars['String']>;
   messageBoardId?: Maybe<Scalars['String']>;
+  postMarketChangePercent?: Maybe<NumberObj>;
   quoteType?: Maybe<Scalars['String']>;
+  regularMarketChangePercent?: Maybe<NumberObj>;
+  regularMarketDayHigh?: Maybe<NumberObj>;
   shortName?: Maybe<Scalars['String']>;
   symbol?: Maybe<Scalars['String']>;
 };
@@ -124,6 +133,8 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  Float: ResolverTypeWrapper<Scalars['Float']>;
+  NumberObj: ResolverTypeWrapper<NumberObj>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
   TickerData: ResolverTypeWrapper<TickerData>;
@@ -133,10 +144,18 @@ export type ResolversTypes = {
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
+  Float: Scalars['Float'];
+  NumberObj: NumberObj;
   Query: {};
   String: Scalars['String'];
   TickerData: TickerData;
   quoteType: QuoteType;
+};
+
+export type NumberObjResolvers<ContextType = any, ParentType extends ResolversParentTypes['NumberObj'] = ResolversParentTypes['NumberObj']> = {
+  fmt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  raw?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -152,7 +171,10 @@ export type TickerDataResolvers<ContextType = any, ParentType extends ResolversP
   longName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   market?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   messageBoardId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  postMarketChangePercent?: Resolver<Maybe<ResolversTypes['NumberObj']>, ParentType, ContextType>;
   quoteType?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  regularMarketChangePercent?: Resolver<Maybe<ResolversTypes['NumberObj']>, ParentType, ContextType>;
+  regularMarketDayHigh?: Resolver<Maybe<ResolversTypes['NumberObj']>, ParentType, ContextType>;
   shortName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   symbol?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -174,6 +196,7 @@ export type QuoteTypeResolvers<ContextType = any, ParentType extends ResolversPa
 };
 
 export type Resolvers<ContextType = any> = {
+  NumberObj?: NumberObjResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   TickerData?: TickerDataResolvers<ContextType>;
   quoteType?: QuoteTypeResolvers<ContextType>;
