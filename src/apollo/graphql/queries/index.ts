@@ -7,9 +7,8 @@ export const getDataByTicker = async (_: unknown, args: { ticker: string }) => {
             url: 'https://yh-finance.p.rapidapi.com/stock/v3/get-statistics',
             params: { symbol: args.ticker },
             headers: {
-                'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
-                'X-RapidAPI-Key':
-                    '7a64e070a7mshe63f2557b2d7e9fp14b0aajsn1f84ed238b0d',
+                'X-RapidAPI-Host': process.env.X_RAPIDAPI_HOST,
+                'X-RapidAPI-Key': process.env.X_RAPIDAPI_KEY,
             },
         };
 
@@ -17,7 +16,7 @@ export const getDataByTicker = async (_: unknown, args: { ticker: string }) => {
         const quoteType = response.data.quoteType;
         const price = response.data.price;
         const data = { ...quoteType, ...price };
-        console.log('data', data);
+        // console.log('data', data);
         return data;
     } catch (error) {
         console.log({ error });
