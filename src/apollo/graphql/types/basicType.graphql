@@ -13,7 +13,21 @@ type quoteType {
 }
 
 type TickerData {
-    quoteType: quoteType
+    exchange: String
+    shortName: String
+    longName: String
+    exchangeTimezoneName: String
+    exchangeTimezoneShortName: String
+    isEsgPopulated: String
+    gmtOffSetMilliseconds: String
+    quoteType: String
+    symbol: String
+    messageBoardId: String
+    market: String
+    # pegRatio: {
+    #     raw: Number
+    #     fmt: String
+    # }
 }
 
 # input DeleteInput {

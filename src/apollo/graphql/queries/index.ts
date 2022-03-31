@@ -16,7 +16,7 @@ export const getDataByTicker = async (_: unknown, args: { ticker: string }) => {
         const response = await axios.request(options);
         console.log('e', response.data.quoteType);
         const quoteType = response.data.quoteType;
-        return { quoteType };
+        return quoteType;
     } catch (error) {
         console.log({ error });
     }

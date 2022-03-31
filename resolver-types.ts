@@ -26,7 +26,17 @@ export type QueryGetDataByTickerArgs = {
 
 export type TickerData = {
   __typename?: 'TickerData';
-  quoteType?: Maybe<QuoteType>;
+  exchange?: Maybe<Scalars['String']>;
+  exchangeTimezoneName?: Maybe<Scalars['String']>;
+  exchangeTimezoneShortName?: Maybe<Scalars['String']>;
+  gmtOffSetMilliseconds?: Maybe<Scalars['String']>;
+  isEsgPopulated?: Maybe<Scalars['String']>;
+  longName?: Maybe<Scalars['String']>;
+  market?: Maybe<Scalars['String']>;
+  messageBoardId?: Maybe<Scalars['String']>;
+  quoteType?: Maybe<Scalars['String']>;
+  shortName?: Maybe<Scalars['String']>;
+  symbol?: Maybe<Scalars['String']>;
 };
 
 export type QuoteType = {
@@ -134,7 +144,17 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type TickerDataResolvers<ContextType = any, ParentType extends ResolversParentTypes['TickerData'] = ResolversParentTypes['TickerData']> = {
-  quoteType?: Resolver<Maybe<ResolversTypes['quoteType']>, ParentType, ContextType>;
+  exchange?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  exchangeTimezoneName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  exchangeTimezoneShortName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  gmtOffSetMilliseconds?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  isEsgPopulated?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  longName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  market?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  messageBoardId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  quoteType?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  shortName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  symbol?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
